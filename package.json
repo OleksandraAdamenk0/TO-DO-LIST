@@ -1,0 +1,47 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "A simple web application \"To-Do List\" built with Node.js using Express, MySQL, and EJS.  This application allows users to: create tasks, view a list of tasks, update tasks, delete tasks.",
+  "main": "app.js",
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write \"**/*.{js,ts,json,css,scss,html,md}\"",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{css,scss,md,json}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OleksandraAdamenk0/TO-DO-LIST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OleksandraAdamenk0/TO-DO-LIST/issues"
+  },
+  "homepage": "https://github.com/OleksandraAdamenk0/TO-DO-LIST#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  }
+}

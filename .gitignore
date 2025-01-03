@@ -1,3 +1,6 @@
+.idea
+.husky
+
 # Logs
 logs
 *.log
