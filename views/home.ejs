@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<main class="wrapper vertical-center">
+    <div class="search horizontal-center">
+        <div class="search-bar horizontal-center">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 11.375C0.5 17.3011 5.32386 22.125 11.25 22.125C17.1761 22.125 22 17.3011 22 11.375C22 5.44886 17.1761 0.625 11.25 0.625C5.32386 0.625 0.5 5.44886 0.5 11.375ZM3 11.375C3 6.83077 6.69651 3.125 11.25 3.125C15.8035 3.125 19.5 6.83077 19.5 11.375C19.5 15.9192 15.8035 19.625 11.25 19.625C6.69651 19.625 3 15.9192 3 11.375Z" fill="#AFAFAF" stroke="#AFAFAF"/>
+                <path d="M23.4667 24.875C23.1406 24.875 22.8144 24.7549 22.5569 24.4976L19.1234 21.0666C18.6255 20.5691 18.6255 19.7456 19.1234 19.2481C19.6212 18.7506 20.4453 18.7506 20.9431 19.2481L24.3766 22.6791C24.8745 23.1766 24.8745 24.0001 24.3766 24.4976C24.1191 24.7549 23.7929 24.875 23.4667 24.875Z" fill="#AFAFAF" stroke="#AFAFAF"/>
+            </svg>
+            <input type="text" placeholder="Search for your task...">
+        </div>
+        <div class="icon-box button horizontal-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 6.5H16M6 6.5H2M22 17.5H18M8 17.5H2M10 10C10.4596 10 10.9148 9.90947 11.3394 9.73358C11.764 9.55769 12.1499 9.29988 12.4749 8.97487C12.7999 8.64987 13.0577 8.26403 13.2336 7.83939C13.4095 7.41475 13.5 6.95963 13.5 6.5C13.5 6.04037 13.4095 5.58525 13.2336 5.16061C13.0577 4.73597 12.7999 4.35013 12.4749 4.02513C12.1499 3.70012 11.764 3.44231 11.3394 3.26642C10.9148 3.09053 10.4596 3 10 3C9.07174 3 8.1815 3.36875 7.52513 4.02513C6.86875 4.6815 6.5 5.57174 6.5 6.5C6.5 7.42826 6.86875 8.3185 7.52513 8.97487C8.1815 9.63125 9.07174 10 10 10V10ZM14 21C14.9283 21 15.8185 20.6313 16.4749 19.9749C17.1313 19.3185 17.5 18.4283 17.5 17.5C17.5 16.5717 17.1313 15.6815 16.4749 15.0251C15.8185 14.3687 14.9283 14 14 14C13.0717 14 12.1815 14.3687 11.5251 15.0251C10.8687 15.6815 10.5 16.5717 10.5 17.5C10.5 18.4283 10.8687 19.3185 11.5251 19.9749C12.1815 20.6313 13.0717 21 14 21V21Z" stroke="#070B11" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="statistics vertical-center">
+        <p>On the road to success: <%= statistic.done%> out of <%= statistic.all%> done!</p>
+        <div class="progress-bar">
+            <div class="progress"
+                 style="width: <%= progressWidth%>%;">
+            </div>
+        </div>
+    </div>
+
+    <button id="create-task" class="create-task button horizontal-center">
+        <span>Create a new task</span>
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 12H16.5M12.5 16V8M9.5 22H15.5C20.5 22 22.5 20 22.5 15V9C22.5 4 20.5 2 15.5 2H9.5C4.5 2 2.5 4 2.5 9V15C2.5 20 4.5 22 9.5 22Z" stroke="#070B11" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <section class="tasks horizontal-center">
+        <article class="left vertical-center">
+            <% leftColumn.forEach(task => { %>
+                <%- include('partials/task', { task }) %>
+            <% }); %>
+        </article>
+        <article class="right vertical-center">
+            <% rightColumn.forEach(task => { %>
+                <%- include('partials/task', { task }) %>
+            <% }); %>
+        </article>
+    </section>
+</main>
+
+<%- include('partials/modal_window.ejs') %>
+
+<script src="/js/home.js"></script>
+</body>
+</html>

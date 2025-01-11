@@ -1,0 +1,283 @@
+@import "normalize.css";
+
+/* ----------------- Root Variables ----------------- */
+:root {
+    --bg-secondary: #31363D;
+    --background: #23262B;
+    --accent: #873FD3;
+    --accent-secondary: #EBA84A;
+    --text-secondary: #BEBEBE;
+    --text-primary: #E6E6E6;
+    --icon-black: #070B11;
+
+    /* ------------------ font ------------------ */
+    --font-primary: 'Open Sans', system-ui;
+    --font-size-base: 16px;
+    --font-size-large: 20px;
+    --font-size-larger: 24px;
+    --font-size-small: 12px;
+
+    /* ------------------ space ------------------ */
+    --space-base: 64px;
+    --space-large: 64px;
+    --space-small: 64px;
+
+    --space-components-base: 24px;
+    --space-components-small: 20px;
+    --space-components-smaller: 12px;
+
+    --transition-base: 0.3s ease;
+}
+
+/* ----------------- Global Styles ----------------- */
+body {
+    background: var(--background);
+    padding: var(--space-large) 0;
+}
+
+/* ----------------- Utility Classes ----------------- */
+.vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.horizontal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* ----------------- Layout Styles ----------------- */
+main {
+    gap: var(--space-large);
+    overflow: hidden;
+}
+
+/* ----------------- Text Styles ----------------- */
+h1, h2, h3, h4, h5, h6, p, span {
+    font-family: var(--font-primary), sans-serif;
+}
+/* ----------------- Components ----------------- */
+
+.button {
+    transition: background var(--transition-base);
+}
+
+.button:hover {
+    cursor: pointer;
+    background: var(--accent-secondary);
+}
+
+/* --- Search Bar --- */
+.search {
+    gap: var(--space-components-base);
+    width: 600px;
+}
+
+.search-bar {
+    background: var(--bg-secondary);
+    padding: var(--space-components-base);
+    gap: var(--space-components-smaller);
+    max-height: 64px;
+    width: 100%;
+}
+
+.search-bar svg path {
+    transition: stroke var(--transition-base), fill var(--transition-base);
+}
+
+.search-bar svg:hover {
+    cursor: pointer;
+}
+
+.search-bar svg:hover path{
+    stroke: var(--accent-secondary);
+    fill: var(--accent-secondary);
+}
+
+.search-bar input {
+    width: 100%;
+    caret-color: var(--accent-secondary);
+    color: var(--text-primary);
+    font-size: var(--font-size-large);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* --- Placeholder Styles --- */
+input::placeholder,
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder,
+input::-ms-input-placeholder {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: 300;
+    line-height: 100%;
+}
+
+.icon-box {
+    background: var(--accent);
+    padding: var(--space-components-small);
+}
+
+.statistics {
+    width: 600px;
+    gap: var(--space-components-base);
+
+    color: var(--text-primary);
+    font-size: var(--font-size-larger);
+    font-weight: 600;
+    font-style: normal;
+    line-height: normal;
+}
+
+.statistics .progress-bar {
+    align-items: flex-start;
+    border: 1.5px solid var(--icon-black);
+    border-radius: 12px;
+    gap: 10px;
+    width: 100%;
+}
+
+.statistics .progress-bar .progress {
+    background: var(--accent-secondary);
+    border-radius: 12px;
+    height: 20px;
+}
+
+.create-task {
+    background: var(--accent);
+    padding: var(--space-components-small) var(--space-components-base);
+    gap: var(--space-components-base);
+    border: none;
+
+    color: var(--text-primary);
+    font-size: var(--font-size-larger);
+    font-weight: 600;
+    font-style: normal;
+    line-height: normal;
+}
+
+.tasks {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+@media (max-width: 834px) {
+    .tasks {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.tasks article {
+    width: 100%;
+    max-width: 540px;
+    gap: var(--space-components-base);
+
+}
+
+.tasks .task {
+    background: var(--bg-secondary);
+    padding: var(--space-components-small) var(--space-components-base);
+    gap: var(--space-components-base);
+    border: none;
+    transition: background var(--transition-base);
+    width: 100%;
+    max-width: 540px;
+}
+
+.tasks .task .icon-box {
+    padding: 14px;
+}
+
+.tasks .task {
+    cursor: pointer;
+}
+
+.tasks .task h1,
+.tasks .task h2,
+.tasks .task h3,
+.tasks .task h4,
+.tasks .task h5,
+.tasks .task h6,
+.tasks .task p,
+.tasks .task span {
+    cursor: text;
+}
+
+.tasks .task .icon-box {
+    cursor: default;
+}
+
+.tasks .task svg:hover path {
+    stroke: var(--accent-secondary);
+}
+
+.task-content {
+    align-items: flex-start;
+    width: 100%;
+    gap: var(--space-components-small);
+
+    line-height: 1;
+    font-style: normal;
+}
+
+.task-content h3 {
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.task-content span {
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    font-weight: 400;
+    font-size: var(--font-size-small);
+}
+
+/* Основное затемнение страницы */
+.blurred {
+    filter: blur(5px); /* Эффект размытия */
+    pointer-events: none; /* Отключаем взаимодействие с контентом */
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Выше всего остального */
+    pointer-events: none; /* Отключено по умолчанию */
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    pointer-events: auto; /* Включаем взаимодействие только внутри модального окна */
+}
+
+/* Скрытие модального окна по умолчанию */
+.hidden {
+    display: none;
+}
+
+/* Убираем прокрутку при открытии модального окна */
+body.no-scroll {
+    overflow: hidden;
+}

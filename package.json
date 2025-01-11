@@ -2,6 +2,7 @@
   "name": "to-do-list",
   "version": "1.0.0",
   "description": "A simple web application \"To-Do List\" built with Node.js using Express, MySQL, and EJS.  This application allows users to: create tasks, view a list of tasks, update tasks, delete tasks.",
+  "type": "module",
   "main": "app.js",
   "scripts": {
     "prepare": "husky install",
