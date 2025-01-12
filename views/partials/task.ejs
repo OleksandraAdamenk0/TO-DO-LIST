@@ -1,4 +1,4 @@
-<div class="task horizontal-center">
+<div class="task horizontal-center" data-id="<%= task.id %>">
     <div class="task-content vertical-center">
         <h3><%= task.title %></h3>
 
@@ -6,15 +6,14 @@
             <span>due on: <%= task.time %> <%= task.date %></span>
         <% } %>
     </div>
-    <div class="icon-box horizontal-center">
-        <% if (task.completed === true) { %>
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.625 18L15.87 22.245L24.375 13.755M18 33C26.25 33 33 26.25 33 18C33 9.75 26.25 3 18 3C9.75 3 3 9.75 3 18C3 26.25 9.75 33 18 33Z" stroke="#070B11" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        <% } else { %>
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 33C26.25 33 33 26.25 33 18C33 9.75 26.25 3 18 3C9.75 3 3 9.75 3 18C3 26.25 9.75 33 18 33Z" stroke="#070B11" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        <% } %>
+
+    <% let checkData = (task.completed === 1)
+            ? "m11.625 18 4.245 4.245 8.505-8.49M18 33c8.25 0 15-6.75 15-15S26.25 3 18 3 3 9.75 3 18s6.75 15 15 15Z"
+            : "M18 33c8.25 0 15-6.75 15-15S26.25 3 18 3 3 9.75 3 18s6.75 15 15 15Z"; %>
+    <% let checkIconData = {width: "36", height: "36", fill: "none", xmlns: "http://www.w3.org/2000/svg",
+        paths: [{d: checkData, stroke: "#070B11", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round"}]}%>
+
+    <div onclick="toggleStatus(<%= task.id %>)">
+        <%- include('./button', { button: {id: task.id, class: "check-task", icon: checkIconData} }) %>
     </div>
 </div>

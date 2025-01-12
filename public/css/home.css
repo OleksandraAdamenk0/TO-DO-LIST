@@ -26,6 +26,7 @@
     --space-components-small: 20px;
     --space-components-smaller: 12px;
 
+    /* ------------------ transitions ------------------ */
     --transition-base: 0.3s ease;
 }
 
@@ -35,18 +36,69 @@ body {
     padding: var(--space-large) 0;
 }
 
+button {
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    gap: var(--space-components-base);
+    padding: var(--space-components-small);
+}
+
+button span {
+    color: var(--text-primary);
+    font-size: var(--font-size-larger);
+    font-weight: 600;
+    font-style: normal;
+    line-height: normal;
+}
+
+input,
+textarea {
+    caret-color: var(--accent-secondary);
+    color: var(--text-primary);
+
+    font-size: var(--font-size-large);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* --- Placeholder Styles --- */
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: 300;
+    line-height: 100%;
+}
+
+/* --- Placeholder Styles for old browser --- */
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder,
+input::-ms-input-placeholder,
+textarea::-webkit-input-placeholder,
+textarea::-moz-placeholder,
+textarea:-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: 300;
+    line-height: 100%;
+}
+
 /* ----------------- Utility Classes ----------------- */
-.vertical-center {
+.vertical-center, .horizontal-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.vertical-center {
     flex-direction: column;
 }
 
 .horizontal-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
 }
 
@@ -57,19 +109,27 @@ main {
 }
 
 /* ----------------- Text Styles ----------------- */
-h1, h2, h3, h4, h5, h6, p, span {
+h1, h2, h3, h4, h5, h6, p, label, span {
     font-family: var(--font-primary), sans-serif;
 }
-/* ----------------- Components ----------------- */
 
-.button {
+/* ----------------- Animated Buttons ----------------- */
+
+button[id^="create-task"] {
+    padding: var(--space-components-small) var(--space-components-base);
     transition: background var(--transition-base);
 }
 
-.button:hover {
-    cursor: pointer;
+button[id^="open-filters"] {
+    transition: background var(--transition-base);
+}
+
+button[id^="create-task"]:hover,
+button[id^="open-filters"]:hover {
     background: var(--accent-secondary);
 }
+
+/* ----------------- Components ----------------- */
 
 /* --- Search Bar --- */
 .search {
@@ -82,6 +142,10 @@ h1, h2, h3, h4, h5, h6, p, span {
     padding: var(--space-components-base);
     gap: var(--space-components-smaller);
     max-height: 64px;
+    width: 100%;
+}
+
+.search-bar input {
     width: 100%;
 }
 
@@ -98,33 +162,7 @@ h1, h2, h3, h4, h5, h6, p, span {
     fill: var(--accent-secondary);
 }
 
-.search-bar input {
-    width: 100%;
-    caret-color: var(--accent-secondary);
-    color: var(--text-primary);
-    font-size: var(--font-size-large);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-}
-
-/* --- Placeholder Styles --- */
-input::placeholder,
-input::-webkit-input-placeholder,
-input::-moz-placeholder,
-input:-ms-input-placeholder,
-input::-ms-input-placeholder {
-    color: var(--text-secondary);
-    font-size: var(--font-size-base);
-    font-weight: 300;
-    line-height: 100%;
-}
-
-.icon-box {
-    background: var(--accent);
-    padding: var(--space-components-small);
-}
-
+/* --- Statistics Bar --- */
 .statistics {
     width: 600px;
     gap: var(--space-components-base);
@@ -148,21 +186,12 @@ input::-ms-input-placeholder {
     background: var(--accent-secondary);
     border-radius: 12px;
     height: 20px;
+
+    width: 0;
+    transition: width 3s var(--transition-base);
 }
 
-.create-task {
-    background: var(--accent);
-    padding: var(--space-components-small) var(--space-components-base);
-    gap: var(--space-components-base);
-    border: none;
-
-    color: var(--text-primary);
-    font-size: var(--font-size-larger);
-    font-weight: 600;
-    font-style: normal;
-    line-height: normal;
-}
-
+/* --- Tasks section --- */
 .tasks {
     width: 100%;
     justify-content: space-between;
@@ -170,54 +199,33 @@ input::-ms-input-placeholder {
     gap: 1rem;
 }
 
-@media (max-width: 834px) {
-    .tasks {
-        justify-content: center;
-        align-items: center;
-    }
-}
-
 .tasks article {
     width: 100%;
     max-width: 540px;
     gap: var(--space-components-base);
-
 }
 
-.tasks .task {
+.task {
     background: var(--bg-secondary);
     padding: var(--space-components-small) var(--space-components-base);
     gap: var(--space-components-base);
-    border: none;
-    transition: background var(--transition-base);
     width: 100%;
-    max-width: 540px;
-}
-
-.tasks .task .icon-box {
-    padding: 14px;
-}
-
-.tasks .task {
     cursor: pointer;
 }
 
-.tasks .task h1,
-.tasks .task h2,
-.tasks .task h3,
-.tasks .task h4,
-.tasks .task h5,
-.tasks .task h6,
-.tasks .task p,
-.tasks .task span {
-    cursor: text;
-}
-
-.tasks .task .icon-box {
+.task button {
+    padding: 14px;
     cursor: default;
 }
 
-.tasks .task svg:hover path {
+.task h3,
+.task span {
+    cursor: text;
+    line-height: 1;
+    font-style: normal;
+}
+
+.task svg:hover path {
     stroke: var(--accent-secondary);
 }
 
@@ -225,59 +233,111 @@ input::-ms-input-placeholder {
     align-items: flex-start;
     width: 100%;
     gap: var(--space-components-small);
-
-    line-height: 1;
-    font-style: normal;
 }
 
-.task-content h3 {
+.task h3 {
     color: var(--text-primary);
     text-transform: uppercase;
     font-weight: 600;
     font-size: 28px;
 }
 
-.task-content span {
+.task span {
     color: var(--text-secondary);
     text-transform: lowercase;
     font-weight: 400;
     font-size: var(--font-size-small);
 }
 
-/* Основное затемнение страницы */
+/* --- Modal window for the new task --- */
 .blurred {
-    filter: blur(5px); /* Эффект размытия */
-    pointer-events: none; /* Отключаем взаимодействие с контентом */
+    filter: blur(4px);
+    pointer-events: none;
 }
 
-/* Модальное окно */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Выше всего остального */
-    pointer-events: none; /* Отключено по умолчанию */
+    background: rgba(35, 38, 43, 0.4);
+    /*background: rgba(0, 0, 0, 0.5);*/
+    z-index: 1000;
+}
+
+.modal-window {
+    width: 80%;
+    height: 90%;
+    max-width: 800px;
+    max-height: 800px;
+    border-radius: 24px;
+    background: var(--bg-secondary);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    pointer-events: auto; /* Включаем взаимодействие только внутри модального окна */
+    width: 100%;
+    height: 100%;
+    padding: 8% 12%;
+    gap: 64px;
 }
 
-/* Скрытие модального окна по умолчанию */
+.modal form {
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.modal form label {
+    color: var(--text-secondary);
+    font-size: var(--font-size-larger);
+    font-style: normal;
+    line-height: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+form[id^="new-task-form"] input,
+form[id^="new-task-form"] textarea {
+    width: 100%;
+    padding: 24px;
+    background: var(--background);
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+form[id^="new-task-form"] textarea[id^="task-description"]{
+    min-height: 120px;
+}
+
+form[id^="new-task-form"] .datetime {
+    width: 100%;
+    justify-content: space-between;
+}
+
+form[id^="new-task-form"] .datetime input {
+    width: auto;
+}
+
+form[id^="new-task-form"] .datetime input[id^="task-date"] {
+    min-width: 240px !important;
+}
+
 .hidden {
     display: none;
 }
 
-/* Убираем прокрутку при открытии модального окна */
 body.no-scroll {
     overflow: hidden;
+}
+
+/* ----------------- Media Queries ----------------- */
+@media (max-width: 834px) {
+    .tasks {
+        justify-content: center;
+        align-items: center;
+    }
 }

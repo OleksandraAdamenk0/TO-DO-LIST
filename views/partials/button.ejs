@@ -1,0 +1,9 @@
+<button id="<%= button.id %>" class="<% if (button["class"] !== undefined) { %><%= button.class %> <% } %> horizontal-center">
+    <% if (button["text"] !== undefined) { %>
+        <span><%= button.text %></span>
+    <% } %>
+
+    <% if (button["icon"] !== undefined) { %>
+            <%-include('./icon', {icon: button.icon }) %>
+    <% } %>
+</button>
