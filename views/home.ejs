@@ -40,7 +40,7 @@
     paths: [{d: "M8.5 12h8m-4 4V8m-3 14h6c5 0 7-2 7-7V9c0-5-2-7-7-7h-6c-5 0-7 2-7 7v6c0 5 2 7 7 7Z",
             stroke: "#070B11", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round"}]}%>
 
-    <%- include('partials/button', { button: {id: "create-task", text: "Create a new task", icon: createIconData} }) %>
+    <%- include('partials/button', { button: {id: "main-create-task", onClick: `openModal()`, text: "Create a new task", icon: createIconData} }) %>
 
     <!----- tasks ----->
     <section class="tasks horizontal-center">
@@ -60,9 +60,8 @@
 <!----- create task window ----->
 <%- include('partials/modal_window.ejs') %>
 
-<script src="/js/home.js"></script>
 <script src="/js/tasks.js"></script>
-
-<script src="/js/createWindow.js"></script>
+<script src="/js/window.js"></script>
+<script src="/js/homepage.js"></script>
 </body>
 </html>

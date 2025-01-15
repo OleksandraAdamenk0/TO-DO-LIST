@@ -1,4 +1,4 @@
-<div class="task horizontal-center" data-id="<%= task.id %>">
+<div class="task horizontal-center" onclick="openModal(event, 'update', {id: <%= task.id %>})" data-id="<%= task.id %>">
     <div class="task-content vertical-center">
         <h3><%= task.title %></h3>
 
@@ -13,7 +13,5 @@
     <% let checkIconData = {width: "36", height: "36", fill: "none", xmlns: "http://www.w3.org/2000/svg",
         paths: [{d: checkData, stroke: "#070B11", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round"}]}%>
 
-    <div onclick="toggleStatus(<%= task.id %>)">
-        <%- include('./button', { button: {id: task.id, class: "check-task", icon: checkIconData} }) %>
-    </div>
+        <%- include('./button', { button: {id: task.id, class: "check-task", onClick: `toggleStatus(${task.id})`, icon: checkIconData} }) %>
 </div>

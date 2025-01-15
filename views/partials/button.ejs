@@ -1,4 +1,7 @@
-<button id="<%= button.id %>" class="<% if (button["class"] !== undefined) { %><%= button.class %> <% } %> horizontal-center">
+<button id="<%= button.id %>"
+        class="<% if (button["class"] !== undefined) { %><%= button.class %> <% } %> horizontal-center"
+        <% if (button["onClick"] !== undefined) { %> onclick="<%= button.onClick%>" <% } %>
+>
     <% if (button["text"] !== undefined) { %>
         <span><%= button.text %></span>
     <% } %>

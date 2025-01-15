@@ -115,7 +115,10 @@ h1, h2, h3, h4, h5, h6, p, label, span {
 
 /* ----------------- Animated Buttons ----------------- */
 
-button[id^="create-task"] {
+button[id^="create-task"],
+button[id^="main-create-task"],
+button[id^="update-task"],
+button[id^="delete-task"] {
     padding: var(--space-components-small) var(--space-components-base);
     transition: background var(--transition-base);
 }
@@ -125,6 +128,9 @@ button[id^="open-filters"] {
 }
 
 button[id^="create-task"]:hover,
+button[id^="main-create-task"]:hover,
+button[id^="update-task"]:hover,
+button[id^="delete-task"]:hover,
 button[id^="open-filters"]:hover {
     background: var(--accent-secondary);
 }
@@ -297,6 +303,11 @@ button[id^="open-filters"]:hover {
     line-height: normal;
     font-weight: 600;
     text-transform: uppercase;
+}
+
+.modal-content .btns {
+    width: 100%;
+    justify-content: space-around;
 }
 
 form[id^="new-task-form"] input,

@@ -1,7 +1,8 @@
 import express from "express";
-import toggleStatus from "../controllers/tasks.js";
+import taskControllers from "../controllers/tasks.js";
 
 const router = express.Router();
-router.route('/:taskID/toggle-status').put(toggleStatus);
+router.route('/:taskID/toggle-status').put(taskControllers.toggleStatus);
+router.route('/:taskID').get(taskControllers.getTaskById);
 
 export default router;
