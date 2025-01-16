@@ -13,5 +13,5 @@
     <% let checkIconData = {width: "36", height: "36", fill: "none", xmlns: "http://www.w3.org/2000/svg",
         paths: [{d: checkData, stroke: "#070B11", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round"}]}%>
 
-        <%- include('./button', { button: {id: task.id, class: "check-task", onClick: `toggleStatus(${task.id})`, icon: checkIconData} }) %>
+        <%- include('./button', { button: {id: task.id, class: "check-task", onClick: `toggleTaskStatus(${task.id})`, icon: checkIconData} }) %>
 </div>

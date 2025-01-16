@@ -310,8 +310,8 @@ button[id^="open-filters"]:hover {
     justify-content: space-around;
 }
 
-form[id^="new-task-form"] input,
-form[id^="new-task-form"] textarea {
+form[id^="task-form"] input,
+form[id^="task-form"] textarea {
     width: 100%;
     padding: 24px;
     background: var(--background);
@@ -320,20 +320,20 @@ form[id^="new-task-form"] textarea {
     outline: none;
 }
 
-form[id^="new-task-form"] textarea[id^="task-description"]{
+form[id^="task-form"] textarea[id^="task-description"]{
     min-height: 120px;
 }
 
-form[id^="new-task-form"] .datetime {
+form[id^="task-form"] .datetime {
     width: 100%;
     justify-content: space-between;
 }
 
-form[id^="new-task-form"] .datetime input {
+form[id^="task-form"] .datetime input {
     width: auto;
 }
 
-form[id^="new-task-form"] .datetime input[id^="task-date"] {
+form[id^="task-form"] .datetime input[id^="task-date"] {
     min-width: 240px !important;
 }
 

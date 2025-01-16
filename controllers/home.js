@@ -2,10 +2,10 @@ import tasksModel from "../models/tasks.js";
 
 const getHome = async (req, res) => {
     const allTasks = await tasksModel.getAllTasks();
-    const complitedTasks = await tasksModel.getComplitedTasks();
+    const completedTasks = await tasksModel.getCompletedTasks();
     const tasksAmount = allTasks.length;
-    const complitedTasksAmount = complitedTasks.length;
-    const percentage = complitedTasksAmount / tasksAmount * 100;
+    const completedTasksAmount = completedTasks.length;
+    const percentage = completedTasksAmount / tasksAmount * 100;
 
     const rightColumnTasks = [];
     const leftColumnTasks = [];
@@ -29,7 +29,7 @@ const getHome = async (req, res) => {
         else { leftColumnTasks.push(formattedTask); }
     }
 
-    res.render('home', {statistic: {done: complitedTasksAmount, all: tasksAmount, progressWidth: percentage},
+    res.render('home', {statistic: {done: completedTasksAmount, all: tasksAmount, progressWidth: percentage},
                         rightColumn: rightColumnTasks, leftColumn: leftColumnTasks
     });
 }

@@ -1,7 +1,7 @@
-<section id="task-modal" onclick="closeModal(event)" class="modal vertical-center hidden">
+<section id="task-modal" onclick="closeModalClickEvent(event)" class="modal vertical-center hidden">
     <div class="modal-window">
         <div class="modal-content vertical-center">
-            <form id="new-task-form" class="vertical-center">
+            <form id="task-form" data-task-id="0" class="vertical-center">
                 <label for="task-title">Task title</label>
                 <input type="text" id="task-title" name="task-title" maxlength="100" placeholder="Enter your task title" required>
 
@@ -30,8 +30,8 @@
 
             <div class="horizontal-center btns">
                 <%- include('./button', { button: {id: "create-task", text: "Create", icon: createIconData} }) %>
-                <%- include('./button', { button: {id: "update-task", text: "Update", icon: updateIconData} }) %>
-                <%- include('./button', { button: {id: "delete-task", text: "Delete", icon: deleteIconData} }) %>
+                <%- include('./button', { button: {id: "update-task", onClick: `updateTask()`, text: "Update", icon: updateIconData } }) %>
+                <%- include('./button', { button: {id: "delete-task", onClick: `deleteTask()`, text: "Delete", icon: deleteIconData} }) %>
             </div>
         </div>
     </div>
