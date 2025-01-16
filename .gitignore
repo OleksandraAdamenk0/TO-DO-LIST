@@ -1,6 +1,7 @@
 .idea
 .husky
 myenv
+node_modules
 
 .env
 .gitignore
